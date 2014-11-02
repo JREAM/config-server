@@ -124,3 +124,18 @@ Find all files in /var/www and add read and write permission for owner and group
 
     $ find /var/www -type f -exec chmod ug+rw {} \;
     
+## Using Networking
+Beginner commands to [http://www.linux.com/learn/tutorials/290879-beginners-guide-to-nmap](nmap)
+
+    $ apt-get install nmap 
+    
+Check open ports
+
+    $ sudo nmap -sT -O localhost
+
+Other ways to check ports
+
+    $ netstat -anp | grep 222
+    $ lsof -i | grep 222
+    $ telnet localhost 222  
+    
