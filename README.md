@@ -62,11 +62,41 @@ You could also add per user, rather than include per group within `/etc/sudoers`
 
     samson ALL=(ALL) ALL
 
-## Easy to manage persistent IP-Tables
+## IP Tables
+`/etc/init.d/iptables` has been removed a while ago, so managing them is different for old schoolers.
+
+Easy to manage persistent IP-Tables
 
     $ apt-get install iptables-persistent
     
+Using persistant iptables:
+
+    $ /etc/init.d/iptables-persistent 
+    
 This will save the rules for IPv4/v6 in: `/etc/iptables/`, Also refer to [IP Tables Wiki](https://wiki.debian.org/iptables) for startup.
+
+List out IP Table Rules
+
+    $ sudo iptables -L
+
+List IP Tables with the Line Number
+    
+    $ sudo iptables -vnL –line-numbers
+    
+Add an INPUT rule (Change the port)
+
+    $ sudo iptables -A INPUT -p tcp --dport 9898 -j ACCEPT
+    
+Delete a IP Table Rule (Get the list from above)
+
+    $ iptables -D INPUT <list-number>
+    
+Permanently save IP Table Rules if satisfied with `$ sudo iptables -L`
+From there, if you are not using iptables-persistent you would want a bash script to load in `/etc/init.d/` or the `/etc/network/ip-up.d`.
+
+    $ touch /ectc/firewall.conf
+    $ iptables-save > /etc/firewall.conf
+
 
 ## Manage Network Scripts
 
