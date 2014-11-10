@@ -55,13 +55,12 @@ This is to also make sure your IP Rules stick :)
 
     reboot
 
-## Use a client to connect
-- ** Windows **
+## Client: Windows
 - Create a New VPN Client in Windows from Control Panel > Networking
 - Connect to the IP
 - Use your Username/Password you setup
 
-- ** Linux **
+## Client: Linux 
 - Create a New VPN Connection
 - Select PPTP
 - Add your IP, Username/Password
