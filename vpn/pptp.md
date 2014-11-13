@@ -69,6 +69,11 @@ to
     /etc/init.d/iptables-persistent save 
     /etc/init.d/iptables-persistent reload
 
+## If Speeds/Sites Slow
+The default MTU that pptpd uses which is ~1300, just increase the MTU on ppp0. We don't want this to occur every time for a new connection edit `/etc/ppp/ip-up` and insert:
+
+    ifconfig ppp0 mtu 1468
+
 ## Reboot your server
 This is to also make sure your IP Rules stick :)
 
