@@ -49,6 +49,11 @@ to
 
     apt-get install iptables-persistent
     [YES] to both
+    
+## Resaving IP Tables
+
+    /etc/init.d/iptables-persistent save 
+    /etc/init.d/iptables-persistent reload
 
 ## Reboot your server
 This is to also make sure your IP Rules stick :)
