@@ -28,6 +28,20 @@ It will look something in like this:
     # client server secret IP addresses
     yourname pptpd any_password *
 
+# Open Up PPTPD Options
+
+    nano /etc/ppp/ppptd-options
+    
+Uncomment:
+
+    #ms-dns 10.0.0.1
+    #ms-dns 10.0.0.2
+    
+Change to Google DNS since they are always up
+
+    ms-dns 8.8.8.8
+    ms-dns 8.8.4.4
+
 ## Enable IPv4 Forwarding
 
     nano /etc/sysctl.conf
