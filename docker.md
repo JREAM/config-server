@@ -1,5 +1,5 @@
 # Docker
-Documentation notes for using Docker (https://docker.com/)[https://docker.com/].
+Documentation notes for using Docker [https://docker.com/](https://docker.com/).
 
 ## Brief
 Docker is application that builds **containers** to host your own isolated Operating Systems.
@@ -60,7 +60,7 @@ different from below.
     $ sudo docker run -d -P training/webapp python app.py
     $ sudo docker ps
 
-Visit (http://localhost:5000)[http://localhost:5000]
+Visit [http://localhost:5000](http://localhost:5000)
 
 We can change the port with
 
@@ -161,7 +161,7 @@ Tag your image
     $ sudo docker tag 3c2cb985d352 jesse/sinatra:dev
 
 ## Using Docker Hub (The SaaS)
-See (https://registry.hub.docker.com/plans/)[https://registry.hub.docker.com/plans/]
+See [https://registry.hub.docker.com/plans/](https://registry.hub.docker.com/plans/)
 
 Push to the docker host
 
