@@ -31,12 +31,12 @@ It will look something in like this:
 # Open Up PPTPD Options
 
     nano /etc/ppp/ppptd-options
-    
+
 Uncomment:
 
     #ms-dns 10.0.0.1
     #ms-dns 10.0.0.2
-    
+
 Change to Google DNS since they are always up
 
     ms-dns 8.8.8.8
@@ -63,10 +63,10 @@ to
 
     apt-get install iptables-persistent
     [YES] to both
-    
+
 ## Resaving IP Tables
 
-    /etc/init.d/iptables-persistent save 
+    /etc/init.d/iptables-persistent save
     /etc/init.d/iptables-persistent reload
 
 ## If Speeds/Sites Slow
@@ -84,8 +84,8 @@ This is to also make sure your IP Rules stick :)
 - Connect to the IP
 - Use your Username/Password you setup
 
-## Client: Linux 
+## Client: Linux
 - Create a New VPN Connection
 - Select PPTP
 - Add your IP, Username/Password
-- Check off `Use Point-to-Point encryption (MPPE)`
+- Check `Use Point-to-Point encryption (MPPE)` to Enabled
