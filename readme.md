@@ -69,6 +69,10 @@ You could also add per user, rather than include per group within `/etc/sudoers`
 Change a users shell
 
     sudo chsh -s /bin/bash samson
+    
+Add Existing user to Existing Group
+
+    usermod -a -G www-data samson
 
 # User Keys
 
@@ -151,7 +155,7 @@ To best share with multiple users who should be able to write in `/var/www`, it 
 
 Then set the correct permissions on `/var/www`.
 
-    $ chown -R /var/www www-data:www-data
+    $ chown -R www-data:www-data /var/www 
     $ chmod -R g+w /var/www
     # Relogin for changes to apply
 
