@@ -11,7 +11,7 @@ Common commands for Debian Flavors (Ubuntu)
 
 ## Config SSH Settings
 
-    $ vim /etc/sshd_config
+    $ vim /etc/ssh/sshd_config
     $ service ssh restart
 
 ## Users
