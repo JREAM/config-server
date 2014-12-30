@@ -5,6 +5,16 @@ Common commands for Debian Flavors (Ubuntu)
 - If there is a `$` symbol, it means it's a terminal command, otherwise it's likely just a path.
 - I am excluding the `$ sudo` command, because it's too repetitive, just `$ sudo su` to save time.
 
+
+# Searching
+Search in the current directory
+    
+    $ grep -Ril "text-to-find-here" .
+    
+    R (recursive)
+    i (case insensitive)
+    l (show the file name, not the result itself)
+    
 ## Enable PPA Repositories
 
     $ apt-get install python-software-properties
@@ -181,4 +191,3 @@ Other ways to check ports
     $ netstat -anp | grep 222
     $ lsof -i | grep 222
     $ telnet localhost 222
-
