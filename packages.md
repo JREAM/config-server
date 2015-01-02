@@ -16,15 +16,15 @@ Always update after adding PPA
 
 ## Utilities
 
-    sudo apt-get install -y\
-    git\
-    htop\
-    curl\
+    sudo apt-get install -y \
+    git \
+    htop \
+    curl 
 
 ## Databases
 
-    sudo apt-get install -y\
-    redis-server\
+    sudo apt-get install -y \
+    redis-server \
     mysql-server
 
 ## NodeJS
@@ -34,24 +34,24 @@ Always update after adding PPA
     
 ### NPM Packages
 
-    sudo npm install -g\
-    gulp\
-    bower\
+    sudo npm install -g \
+    gulp \
+    bower \
     grunt-cli
 
 ## PHP Packages
     
-    sudo apt-get install -y\
-    php5\
-    php5-dev\
-    apache2\
-    libapache2-mod-php5\
-    php5-mysql\
-    php5-curl\
-    php5-mcrypt\
-    php5-phalcon\
-    php5-intl\
-    libpcre3-dev\
+    sudo apt-get install -y \
+    php5 \
+    php5-dev \
+    apache2 \
+    libapache2-mod-php5 \
+    php5-mysql \
+    php5-curl \
+    php5-mcrypt \
+    php5-phalcon \
+    php5-intl \
+    libpcre3-dev \
     phpunit
     
 ### PHP Quick Options
