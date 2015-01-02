@@ -53,6 +53,8 @@ Always update after adding PPA
     php5-phalcon \
     php5-intl \
     libpcre3-dev \
+    php5-gd \
+    libssh2-php \
     phpunit
     
 ### PHP Quick Options
