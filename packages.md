@@ -3,7 +3,7 @@
 
 ## Enable PPA sources with the following:
 
-    install -y python-software-properties
+    apt-get install -y python-software-properties
 
 ## PPA Items
   
