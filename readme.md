@@ -6,14 +6,24 @@ Common commands for Debian Flavors (Ubuntu)
 - I am excluding the `$ sudo` command, because it's too repetitive, just `$ sudo su` to save time.
 
 
-# Searching
-Search in the current directory
+## Searching
+
+Search for a filename from system path
+
+    $ find / --name filename
+    
+Search the contents of a file
+
+    $ cat filename | grep "text-to-find-here"
+
+Search within files in the current directory 
     
     $ grep -Ril "text-to-find-here" .
     
     R (recursive)
     i (case insensitive)
     l (show the file name, not the result itself)
+
     
 ## Enable PPA Repositories
 
