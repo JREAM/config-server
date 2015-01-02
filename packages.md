@@ -17,6 +17,7 @@ Always update after adding PPA
 ## Utilities
 
     sudo apt-get install -y \
+    vim \
     git \
     htop \
     curl 
@@ -81,13 +82,13 @@ Always update after adding PPA
     
 ## Python Packages
 
-    sudo apt-get install -y\
+    sudo apt-get install -y \
     python-pip
     
 ## Python PIP Packages
 
-    sudo pip install\
-    virtualenv\
+    sudo pip install \
+    virtualenv \
     virtualenvwrapper
 
 ## Default Apache 
