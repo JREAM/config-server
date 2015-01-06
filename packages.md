@@ -85,7 +85,9 @@ Always update after adding PPA
 ## Python Packages
 
     sudo apt-get install -y \
-    python-pip
+    python-pip \
+    python-dev \
+    python-imaging
     
 ## Python PIP Packages
 
