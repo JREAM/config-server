@@ -24,3 +24,18 @@ Grant All Priveleges to Specific Database
 Grant Some Priveleges to Specific Database
 
     GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON database_name.* TO 'person'@'%'
+    
+Reset Root Password (Easy to use two terminals)
+
+    sudo /etc/init.d/mysqld stop
+    sudo mysqld_safe --skip-grant-tables &
+
+    mysql -u root
+    USE mysql;
+    UPDATE user SET password=PASSWORD("") where User='root';
+    FLUSH privileges;
+    QUIT
+    
+    sudo /etc/init.d/mysql start
+    mysql -u root
+
