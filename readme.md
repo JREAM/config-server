@@ -134,6 +134,8 @@ Easy to manage persistent IP-Tables
 Using persistant iptables:
 
     $ /etc/init.d/iptables-persistent
+    $ sudo /etc/init.d/iptables-persistent save 
+    $ sudo /etc/init.d/iptables-persistent reload
 
 This will save the rules for IPv4/v6 in: `/etc/iptables/`, Also refer to [IP Tables Wiki](https://wiki.debian.org/iptables) for startup.
 
