@@ -16,11 +16,18 @@ Always update after adding PPA
 
 ## Utilities
 
+    sudo add-apt-repository ppa:git-core/ppa -y
+
     sudo apt-get install -y \
     vim \
     git \
     htop \
     curl 
+
+    git config --global push.default simple
+    git config --global user.name your name
+    git config --global user.email your@email.com
+
 
 ## Databases
 
