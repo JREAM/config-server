@@ -94,6 +94,27 @@ Add Existing user to Existing Group
 
     usermod -a -G www-data samson
 
+Make an SFTP user
+
+    sudo groupadd sftp_users
+    useradd -m -s /bin/bash samson
+    passwd samson
+    sudo usermod -G sftp_users samson
+    
+    # For a webserver, you should add the webserver group AS WELL
+    sudo usermod -G www-data samson  
+    
+    sudo vim /etc/ssh/sshd_config
+    
+    # SFTP Permission (end of file)
+    Match group filetransfer
+        ChrootDirectory %h
+        X11Forwarding no
+        AllowTcpForwarding no
+        ForceCommand internal-sftp
+    
+    sudo /etc/init.d/ssh restart
+
 # User Keys
 
 Use an existing SSH key. Paste your id_rsa.pub in one line in the file:
