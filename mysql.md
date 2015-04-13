@@ -28,7 +28,14 @@ Grant Some Priveleges to Specific Database
 Reset Root Password (Easy to use two terminals)
 
     sudo /etc/init.d/mysqld stop
+    sudo service mysql stop
     sudo mysqld_safe --skip-grant-tables &
+
+If you have a `.my.cnf` file lingering around, you are better off just doing:
+
+    sudo su && mysql
+
+Otherwise, carry on this way:
 
     mysql -u root
     USE mysql;
@@ -36,6 +43,11 @@ Reset Root Password (Easy to use two terminals)
     FLUSH privileges;
     QUIT
     
+kill all instances of MySQL now
+
+    pkill -f mysql
+    
     sudo /etc/init.d/mysql start
+    sudo service mysql start
     mysql -u root
 
