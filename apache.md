@@ -2,33 +2,108 @@
 
 This is for Ubuntu and Debian. This is using Apache 2.2 and 2.4.
 
-## Install
+## Table of Contents
+- [Install](#install)
+- [Commands](#commands)
+    - [Toggling Sites and Service](#toggling-sites-and-service)
+    - [Enabling and Disable Modules](#enabling-and-disable-modules)
+    - [Apache Control](#apache-control)
+    - [Apache Utils](#apache-utils)
+- [Troubleshooting Sites](#troubleshooting-sites)
+- [Examples](#examples)
+    - [htacccess](#htaccess)
+    - [Virtual Host](#virtual-host)
+    - [Virtual Host SSL](#virtual-host-ssl)
+    - [Subdomain](#subdomain)
+    - [Macros](#macros)
+
+### Install
 ```
 apt-get install apache2
 cd /etc/apache2/
 ```
 
-Some commands are:
+***
+
+## Commands
+
+### Toggling Sites and Service
 ```
 a2ensite yoursitename
 a2dissite yoursitename
-service apache2 reload
-service apache2 restart
-```
-    <Directory /var/www/>
-        Options Indexes FollowSymLinks MultiViews
-        AllowOverride None
-        Order allow,deny
-        allow from all
-    </Directory>
-
-## Troubleshooting Sites-Enabled
-
-```
-apachectl configtest
+service apache2 start|stop|reload|graceful
 ```
 
-## Example Virtual Host
+###  Enabling and Disable Modules
+```
+a2enmod rewrite
+a2enmod evasive
+a2dismod security
+```
+
+### Apache Control
+```
+# It appears both of these work
+apache2ctl -h 
+apachectl -h 
+```
+
+### Apache Utils
+A cool little tool you can use with Apache if you want to dig in is the utils:
+
+    sudo apt-get install apache2utils
+    
+It has the following features:
+
+- `ab` (Apache benchmark tool)
+- `logresolve` (Resolve IP addresses to hostname in logfiles)
+- `htpasswd` (Manipulate basic authentication files)
+- `htdigest` (Manipulate digest authentication files)
+- `dbmmanage` (Manipulate basic authentication files in DBM format, using perl)
+- `htdbm` (Manipulate basic authentication files in DBM format, using APR)
+- `rotatelogs` (Periodically stop writing to a logfile and open a new one)
+- `split-logfile` (Split a single log including multiple vhosts)
+- `checkgid` (Checks whether the caller can setgid to the specified group)
+- `check_forensic` (Extract mod_log_forensic output from apache log files)
+
+***
+
+## Troubleshooting Sites
+This will tell you if there is an error.
+```
+apache2ctl configtest
+```
+
+If you cannot find the error, check the logs:
+
+```
+tail /var/log/apache2/error.log -n25
+```
+
+***
+
+## Examples
+Below are some examples for easy configuration made just for you.
+
+### htaccess
+First figure out your apache version with:
+
+    apache2ctl -V
+    
+You should see something like:
+    
+    Server version: Apache/2.2.22 (Debian or Ubuntu)
+
+For **2.2** your `<Directory>` typically has:
+
+    Order allow,deny
+    Allow from all
+    
+For **2.4** your `<Directory>` has:
+
+    Require all granted
+    
+### Virtual Host
 
   ServerName yoursite.com
   <VirtualHost *:80>
@@ -45,7 +120,7 @@ apachectl configtest
       CustomLog /var/www/yoursite.com/logs/access.log combined
   </VirtualHost>
 
-## Example Virtual Host SSL
+### Virtual Host SSL
 
 You must replace your email, site name, path to your site, logs are optional, and the correct SSL keys with their respective locations. (*This would go nicely in the same Host that is serving port 80 above*).
 
@@ -68,8 +143,8 @@ You must replace your email, site name, path to your site, logs are optional, an
         SSLCertificateKeyFile /etc/apache2/ssl/yoursite.com/server.key
     	SSLCACertificateFile /etc/apache2/ssl/yoursite.com/yoursite.com.cer
     </VirtualHost>
-
-## Example Subdomain
+    
+### Subdomain
 If you wanted a blog subdomain you could do it like this. Keep in mind your DNS must point:
 
     # Your IP Address
@@ -91,7 +166,7 @@ Here is the subdomain example, and without saying much you'd set your paths and 
     </VirtualHost>
 
 
-## Macros for better configs
+### Macros
   
 ```
 apt-get install libapache2-mod-macro
