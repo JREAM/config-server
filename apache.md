@@ -1,20 +1,97 @@
 # Apache
 
-Debian 7.x
+This is for Ubuntu and Debian. This is using Apache 2.2 and 2.4.
 
-# Install
-
+## Install
 ```
 apt-get install apache2
+cd /etc/apache2/
 ```
 
-# Troubleshooting Sites-Available
+Some commands are:
+```
+a2ensite yoursitename
+a2dissite yoursitename
+service apache2 reload
+service apache2 restart
+```
+    <Directory /var/www/>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        allow from all
+    </Directory>
+
+## Troubleshooting Sites-Enabled
 
 ```
 apachectl configtest
 ```
 
-# Macros for better configs
+## Example Virtual Host
+
+  ServerName yoursite.com
+  <VirtualHost *:80>
+      ServerAdmin server@yoursite.com
+      ServerName  yoursite.com
+      ServerAlias yoursite.com www.yoursite.com
+  
+      # Indexes + Directory Root.
+      DirectoryIndex index.php
+      DocumentRoot /var/www/yoursite.com/htdocs/public/
+  
+      # Logfiles
+      ErrorLog  /var/www/yoursite.com/logs/error.log
+      CustomLog /var/www/yoursite.com/logs/access.log combined
+  </VirtualHost>
+
+## Example Virtual Host SSL
+
+You must replace your email, site name, path to your site, logs are optional, and the correct SSL keys with their respective locations. (*This would go nicely in the same Host that is serving port 80 above*).
+
+    <VirtualHost *:443>
+        ServerAdmin server@yoursite.com
+        ServerName  yoursite.com
+        ServerAlias yoursite.com www.yoursite.com
+
+        # Indexes + Directory Root.
+        DirectoryIndex index.php
+        DocumentRoot /var/www/yoursite.com/htdocs/public/
+
+        # Logfiles
+        ErrorLog  /var/www/yoursite.com/logs/error.log
+        CustomLog /var/www/yoursite.com/logs/access.log combined
+
+        # SSL
+        SSLEngine on
+        SSLCertificateFile /etc/apache2/ssl/yoursite.com/yoursite_com.crt
+        SSLCertificateKeyFile /etc/apache2/ssl/yoursite.com/server.key
+    	SSLCACertificateFile /etc/apache2/ssl/yoursite.com/yoursite.com.cer
+    </VirtualHost>
+
+## Example Subdomain
+If you wanted a blog subdomain you could do it like this. Keep in mind your DNS must point:
+
+    # Your IP Address
+    A Record: 99.99.99.99 
+
+Here is the subdomain example, and without saying much you'd set your paths and sitename accordingly.
+
+    <VirtualHost *:80>
+        ServerAdmin server@yoursite.com
+        ServerName  blog.yoursite.com
+    
+        # Indexes + Directory Root.
+        DirectoryIndex index.php
+        DocumentRoot /var/www/yoursite.com/subdomains/blog
+    
+        # Logfiles
+        ErrorLog  /var/www/yoursite.com/subdomains/logs/error.log
+        CustomLog /var/www/yoursite.com/subdomains/logs/access.log combined
+    </VirtualHost>
+
+
+## Macros for better configs
   
 ```
 apt-get install libapache2-mod-macro
