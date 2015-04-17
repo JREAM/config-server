@@ -51,3 +51,20 @@ kill all instances of MySQL now
     sudo service mysql start
     mysql -u root
 
+## Dump MySQL 
+The brackets mean its optional, remove the [ ] if you need it.
+
+    # Long Format
+    mysqldump --user=username [--password=password] [--host=host] dbName | gzip > output.sql.gz
+    
+    # Short Format (The -p must have the password without a space)
+    mysqldump -u username [-pPassword] -h localhost dbName | gzip > output.sql.gz
+
+## Import MySQL 
+
+    zcat output.sql.gz | mysql -u username -p dbName
+    
+## MySQL Script
+
+    WIP
+
