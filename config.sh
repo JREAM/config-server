@@ -86,6 +86,8 @@ echo ""
 
             touch /home/$name/.ssh/authorized_keys
 
+            chown -R $name:$name /home/$name/.ssh
+
             echo ""
             echo " (+) The new user: $name, has been created. "
             echo " (+) The default set is shell: $shell "
