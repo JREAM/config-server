@@ -10,6 +10,19 @@ See all commands
 
     docker
 
+Run a command:
+
+    docker version
+
+I was getting this error
+
+    FATA[0000] Get http:///var/run/docker.sock/v1.17/version: dial unix /var/run/docker.sock: no such file or directory. Are you trying to connect to a TLS-enabled daemon without TLS? 
+
+This worked for me to run commands (you could also just `sudo su` if you wanted to not type sudo)
+
+    sudo docker version
+
+
 ## Brief
 Docker is application that builds **containers** to host your own isolated Operating Systems.
 You can create your Docker Image with any service/language and deploy them to your servers.
