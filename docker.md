@@ -1,6 +1,15 @@
 # Docker
 Documentation notes for using Docker [https://docker.com/](https://docker.com/).
 
+## Install
+Easily on Linux:
+
+    apt-get install docker.io
+
+See all commands
+
+    docker
+
 ## Brief
 Docker is application that builds **containers** to host your own isolated Operating Systems.
 You can create your Docker Image with any service/language and deploy them to your servers.
