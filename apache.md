@@ -115,9 +115,9 @@ For **2.4** your `<Directory>` has:
       DirectoryIndex index.php
       DocumentRoot /var/www/yoursite.com/htdocs/public/
   
-      # Logfiles
-      ErrorLog  /var/www/yoursite.com/logs/error.log
-      CustomLog /var/www/yoursite.com/logs/access.log combined
+      # Logfiles (This path will automatically rotate logs)
+      ErrorLog  /var/log/apache2/yoursite.com_error.log
+      CustomLog /var/log/apache2/yoursite.com_access.log combined
   </VirtualHost>
 
 ### Virtual Host SSL
@@ -133,9 +133,9 @@ You must replace your email, site name, path to your site, logs are optional, an
         DirectoryIndex index.php
         DocumentRoot /var/www/yoursite.com/htdocs/public/
 
-        # Logfiles
-        ErrorLog  /var/www/yoursite.com/logs/error.log
-        CustomLog /var/www/yoursite.com/logs/access.log combined
+        # Logfiles (This path will automatically rotate logs)
+        ErrorLog  /var/log/apache2/yoursite.com_error.log
+        CustomLog /var/log/apache2/yoursite.com_access.log combined
 
         # SSL
         SSLEngine on
@@ -160,9 +160,9 @@ Here is the subdomain example, and without saying much you'd set your paths and 
         DirectoryIndex index.php
         DocumentRoot /var/www/yoursite.com/subdomains/blog
     
-        # Logfiles
-        ErrorLog  /var/www/yoursite.com/subdomains/logs/error.log
-        CustomLog /var/www/yoursite.com/subdomains/logs/access.log combined
+        # Logfiles (This path will automatically rotate logs)
+        ErrorLog  /var/log/apache2/yoursite.com_subdomains_error.log
+        CustomLog /var/log/apache2/yoursite.com_subdomains_access.log combined
     </VirtualHost>
 
 
