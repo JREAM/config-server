@@ -158,6 +158,7 @@ Saving permanent tables:
     $ sudo vim /etc/network/if-pre-up.d/iptables
     
 Add the following:
+
     #!/bin/sh
     /sbin/iptables-restore < /etc/iptables.up.rules
 
