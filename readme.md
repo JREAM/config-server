@@ -152,11 +152,18 @@ Easy to manage persistent IP-Tables
 
     $ apt-get install iptables-persistent
 
-Using persistant iptables:
+Saving permanent tables:
 
-    $ /etc/init.d/iptables-persistent
-    $ sudo /etc/init.d/iptables-persistent save 
-    $ sudo /etc/init.d/iptables-persistent reload
+    $ iptables-save > /etc/iptables.up.rules
+    $ sudo vim /etc/network/if-pre-up.d/iptables
+    
+Add the following:
+    #!/bin/sh
+    /sbin/iptables-restore < /etc/iptables.up.rules
+
+Make it executiable:
+    
+    chmod +x /etc/network/if-pre-up.d/iptables
 
 This will save the rules for IPv4/v6 in: `/etc/iptables/`, Also refer to [IP Tables Wiki](https://wiki.debian.org/iptables) for startup.
 
