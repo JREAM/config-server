@@ -132,9 +132,10 @@ Or, create a new SSH key
 
 SSH Directory Permissions
 
-    ~/.ssh              700
-    ~/.ssh/id_rsa.pub   644
-    ~/.ssh/id_rsa       600
+    ~/.ssh                 700
+    ~/.ssh/id_rsa.pub      644
+    ~/.ssh/id_rsa          600
+    ~/.ssh/authorized_keys 600
 
 One liner permissions
 
@@ -142,7 +143,7 @@ One liner permissions
 
 If you have a Private Key also
 
-    chmod 700 ~/.ssh && chmod 644 ~/.ssh/id_rsa.pub && chmod 600 ~/.ssh/id_rsa
+    chmod 700 ~/.ssh && chmod 644 ~/.ssh/id_rsa.pub && chmod 600 ~/.ssh/id_rsa && chmod 600 ~/.ssh/authorized_keys
 
 ## IP Tables
 
