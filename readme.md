@@ -14,6 +14,7 @@ This is a guide to install a server for an **Ubuntu 14 LTS** server. You could l
     - [Apache2 Mod-Evasive](#apache2-mod-evasive)
 - [Packages](#packages)
 - [Commands](#commands)
+    - [SSH Welcome Message](#ssh-welcome-message)  
     - [Searching](#searching)
     - [Enable PPA Repositories](#enable-ppa-repositories)
     - [User Management](#user-management)
@@ -196,6 +197,31 @@ These are some common packages you can use.
 
 #Commands
 These are commands for reference.
+
+###SSH Welcome Message
+When you login to your SSH, you can add a custom welcome banner that looks cool:
+
+    sudo vim /etc/ssh/sshd_config
+    Banner /etc/banner
+
+Then create the file and add anything you want:
+
+    sudo vim /etc/banner
+    
+Here is an example:
+```
+   __ _____ _____ _____ _____ 
+ __|  | __  |   __|  _  |     |
+|  |  |    -|   __|     | | | |
+|_____|__|__|_____|__|__|_|_|_|
+-------------------------------
+Server 01               Welcome
+-------------------------------
+```
+    
+I used a text to ASCII generator for that. Then restart and it will appear next time you login!
+
+    sudo service ssh restart
 
 ##Searching
 
