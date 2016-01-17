@@ -1,22 +1,35 @@
 # Packages
 
 
-## Enable PPA sources with the following:
+## Enable PPA sources with the following if you're on Ubuntu 12 or lower:
 
     apt-get install -y python-software-properties
 
 ## PPA Items
-  
-    sudo apt-add-repository ppa:ondrej/php5
+PPA means Personal Package Archive that users or organizations create so that you do not have to manually compile softwrae.
+
+For the latest **git** version you can also add the following PPA
+
+    sudo add-apt-repository ppa:git-core/ppa -y
+
+If you wanted the latest **PHP**, this guy does quite a bit:
+
+    sudo apt-add-repository ppa:ondrej/php
+
+If you want the fast **PHP Phalcon** framework you could add:
+
     sudo apt-add-repository ppa:phalcon/stable
     
-Always update after adding PPA
+**Important** Always update after adding PPA
 
     apt-get update
 
-## Utilities
+Now you can look at what you added:
 
-    sudo add-apt-repository ppa:git-core/ppa -y
+    sudo apt-get install php7<TAB-key>
+    sudo apt-get install php5<TAB-key>
+
+## Utilities
 
     sudo apt-get install -y \
     vim \
@@ -24,9 +37,11 @@ Always update after adding PPA
     htop \
     curl 
 
+Configure your git details (without the `< placeholders >`):
+
     git config --global push.default simple
-    git config --global user.name your name
-    git config --global user.email your@email.com
+    git config --global user.name <your name>
+    git config --global user.email <your@email.com>
 
 
 ## Databases
@@ -34,18 +49,6 @@ Always update after adding PPA
     sudo apt-get install -y \
     redis-server \
     mysql-server
-
-## NodeJS
-
-    curl -sL https://deb.nodesource.com/setup | bash -
-    sudo apt-get install -y nodejs
-    
-### NPM Packages
-
-    sudo npm install -g \
-    gulp \
-    bower \
-    grunt-cli
 
 ## PHP Packages
     
@@ -65,15 +68,19 @@ Always update after adding PPA
     phpunit
     
 ### PHP Quick Options
+This is to make your development environment easier to work with. Do **not** do this in production.
 
     sudo sed -i 's/short_open_tag = Off/short_open_tag = On/' /etc/php5/apache2/php.ini
     sudo sed -i 's/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/' /etc/php5/apache2/php.ini
     sudo sed -i 's/display_errors = Off/display_errors = On/' /etc/php5/apache2/php.ini 
     # Append session save location to /tmp to prevent errors in an odd situation..
     sudo sed -i '/\[Session\]/a session.save_path = "/tmp"' /etc/php5/apache2/php.ini
+
+You may also want to run some of the same things on `/etc/php5/cli/php.ini` if you use the CLI a lot.
     
-### PHP Composer, use Globally
-    
+### PHP Composer
+Composer is the PHP Package Manager. You should use composer globally it makes life easier.
+
     sudo curl -sS https://getcomposer.org/installer | php
     sudo mv composer.phar /usr/local/bin/composer
     
@@ -100,29 +107,49 @@ Always update after adding PPA
 
     sudo pip install \
     virtualenv \
-    virtualenvwrapper
+    virtualenvwrapper \
+    fabric
 
-## Default Apache 
+## Basic Apache Templates 
+For Apache **2.4**
 
-    cd ~
-    echo '<VirtualHost *:80>
+    sudo echo '<VirtualHost *:80>
             DocumentRoot /var/www
     </VirtualHost>
     <Directory "/var/www">
             Options Indexes Followsymlinks
             AllowOverride All
             Require all granted
-    </Directory>' > default.conf
+    </Directory>' > local.conf
     
-    sudo mv default.conf /etc/apache2/sites-available
+    sudo mv local.conf /etc/apache2/sites-available
+    sudo a2ensite local
+    sudo service apache2 reload
+    
+#### For Apache **2.2**
+
+Change These lines:
+
+    AllowOverride All
+    Require all granted
+
+To This:
+
+    Order allow,deny
+    Allow from all
+    
+Your default access and error logs are in `/var/log/apache2/`.
     
 ### Enable Modules
+
+PHP Modules
 
     sudo php5enmod phalcon
     sudo php5enmod curl
     sudo php5enmod mcrypt
     sudo php5enmod intl
 
-    sudo a2dissite 000-default
+Apache Modules
+
     sudo a2ensite default
     sudo a2enmod rewrite
