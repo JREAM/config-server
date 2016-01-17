@@ -1,12 +1,12 @@
 # Packages
+These are system packages that I find handy.
 
-
-## Enable PPA sources with the following if you're on Ubuntu 12 or lower:
+## Enable PPA if on Ubuntu 12 or lower:
+PPA means Personal Package Archive that users or organizations create so that you do not have to manually compile softwrae.
 
     apt-get install -y python-software-properties
 
 ## PPA Items
-PPA means Personal Package Archive that users or organizations create so that you do not have to manually compile softwrae.
 
 For the latest **git** version you can also add the following PPA
 
@@ -30,12 +30,28 @@ Now you can look at what you added:
     sudo apt-get install php5<TAB-key>
 
 ## Utilities
+Here are what these utilities do
+- VIM is a text editor and it has a ton of cool addons [VimAwesome](http://vimawesome.com)
+    - I would install [Vundle](https://github.com/VundleVim/Vundle.vim) for VIM 
+- HTOP is a better version of TOP
+- LSOF is List of Open Files
+- VMSTAT provides details about your environment
+- RSYNC is a tool that allows you to transfer files from servers or locally.
+- BZIP2 is handles bz2 files like zip
+- GZIP is another good compression tool like zip
+- MLOCATE helps you find things using `updatedb`
 
     sudo apt-get install -y \
     vim \
     git \
     htop \
-    curl 
+    curl \
+    lsof \ 
+    vmstat \
+    rsync \
+    bzip2 \
+    gzip \
+    mlocate
 
 Configure your git details (without the `< placeholders >`):
 
