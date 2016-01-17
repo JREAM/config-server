@@ -31,16 +31,18 @@ Now you can look at what you added:
 
 ## Utilities
 Here are what these utilities do
-- VIM is a text editor and it has a ton of cool addons [VimAwesome](http://vimawesome.com)
+- `vim` is a text editor and it has a ton of cool addons [VimAwesome](http://vimawesome.com)
     - I would install [Vundle](https://github.com/VundleVim/Vundle.vim) for VIM 
-- HTOP is a better version of TOP
-- LSOF is List of Open Files
-- VMSTAT provides details about your environment
-- RSYNC is a tool that allows you to transfer files from servers or locally.
-- BZIP2 is handles bz2 files like zip
-- GZIP is another good compression tool like zip
-- MLOCATE helps you find things using `updatedb`
+- `htop` is a better version of TOP
+- `lsof` is List of Open Files
+- `vmstat` provides details about your environment
+- `rsync` is a tool that allows you to transfer files from servers or locally.
+- `bzip2` is handles bz2 files like zip
+- `gzip` is another good compression tool like zip
+- `mlocate` helps you find things using `updatedb`
 
+Command to install all:
+```
     sudo apt-get install -y \
     vim \
     git \
@@ -52,7 +54,9 @@ Here are what these utilities do
     bzip2 \
     gzip \
     mlocate
+```
 
+####Configure Git
 Configure your git details (without the `< placeholders >`):
 
     git config --global push.default simple
