@@ -188,21 +188,20 @@ Reload Apache:
     sudo service apache2 reload
 
 #Packages
-The location of the aptitute (`apt`) source list is at:
+The location for aptitude `apt` package sources is:
 
-    /etc/apt/sources.list
+    /etc/apt/sources.list     # This is one long file of defaults
+    /etc/apt/sources.list.d/  # These are separate files for things like PPA adding
     
-However, you if you manually add sources you should put them in separate files in this folder, then you can delete it without editing a file if you like:
-
-    /etc/apt/sources.list.d
-    
+If you choose to manually add a package I would recommend adding it to the `/etc/apt/sources.list.d/your-source.list` directory, that way you can just delete it and `sudo apt-get update` if you don't want it -- rather than editing the main `sources.list` file.
 
 ###Common Items
+These are some common packages you can use. If you prefer `nginx` over `apache` then install that instead.
 
-    sudo apt-get install \
-    git htop xclip \
-    python-dev python-pip \
-    php5 php5-dev \
+    sudo apt-get install\
+    git htop xclip\
+    python-dev python-pip\
+    php5 php5-dev\
     apache2 apache2-utils
 
 
@@ -210,7 +209,7 @@ However, you if you manually add sources you should put them in separate files i
 This should exist by default, but if it doesn't install it:
 
     sudo apt-get install python-software-properties
-    
+
 #Commands
 These are commands for reference.
 
