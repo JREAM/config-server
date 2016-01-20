@@ -13,10 +13,11 @@ This is a guide to install a server for an **Ubuntu 14 LTS** server. You could l
     - [Unattended Upgrades](#unattended-upgrades)
     - [Apache2 Mod-Evasive](#apache2-mod-evasive)
 - [Packages](#packages)
+    - [Common Items](#common-items)
+    - [Enable PPA Repositories](#enable-ppa-repositories)
 - [Commands](#commands)
     - [SSH Welcome Message](#ssh-welcome-message)  
     - [Searching](#searching)
-    - [Enable PPA Repositories](#enable-ppa-repositories)
     - [User Management](#user-management)
     - [SFTP User](#sftp-user)
 - [Manage Network Scripts](#manage-network-scripts)
@@ -187,14 +188,29 @@ Reload Apache:
     sudo service apache2 reload
 
 #Packages
-These are some common packages you can use.
+The location of the aptitute (`apt`) source list is at:
 
-    sudo apt-get install\
-    git htop xclip\
-    python-dev python-pip\
-    php5 php5-dev\
+    /etc/apt/sources.list
+    
+However, you if you manually add sources you should put them in separate files in this folder, then you can delete it without editing a file if you like:
+
+    /etc/apt/sources.list.d
+    
+
+###Common Items
+
+    sudo apt-get install \
+    git htop xclip \
+    python-dev python-pip \
+    php5 php5-dev \
     apache2 apache2-utils
 
+
+###Enable PPA Repositories
+This should exist by default, but if it doesn't install it:
+
+    sudo apt-get install python-software-properties
+    
 #Commands
 These are commands for reference.
 
@@ -240,12 +256,6 @@ Search within files in the current directory
     R (recursive)
     i (case insensitive)
     l (show the file name, not the result itself)
-
-
-##Enable PPA Repositories
-This should exist by default, but if it doesn't install it:
-
-    sudo apt-get install python-software-properties
 
 ##User Management
 
