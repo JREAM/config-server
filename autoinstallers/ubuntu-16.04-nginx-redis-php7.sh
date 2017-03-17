@@ -34,14 +34,6 @@ fi
 username=${username,,}
 deploy=${username,,}
 
-# Validate usernames
-# @TODO: If this step gets screwed up or their password, there should
-#        be a way to continue.
-checkExistsUsername $username           # Exits on failure
-checkValidUsername  $username           # Exits on Failure
-checkExistsUsername $username_deploy    # Exits on failure
-checkValidUsername  $username_deploy    # Exits on Failure
-
 echo "Create a Password for $username (The deloy user $username_deploy has no password)"
 useradd -m $username
 passwd $username
@@ -106,17 +98,18 @@ apt install -y\
 
 echo "Add Security Tools (fail2ban, clamav, rkhunter)"
 pip install fail2ban
-apt install clamav\
+apt install -y clamav\
     rkhunter
 
 echo "Install Server"
-apt install nginx nginx-extras
+apt install -y nginx\ 
+    nginx-extras
 
 echo "Copy server config over"
 yes | cp nginx/default /etc/nginx/sites-available/default
 
 echo "Install Redis"
-apt install -y redis
+apt install -y redis-server
 
 echo "Install PHP"
 apt install -y\
@@ -247,29 +240,3 @@ echo "$ scp $USER@$server_ip:$HOME/$download_file /path/on/your/computer"
 echo ""
 echo "(!) Once downloaded, remove the tar.gz"
 echo "(!) Check that your server is running at: http://$server_ip"
-
-# /
-# ------------------------------------------
-#  Funcions
-# ------------------------------------------
-# \
-# Verify they do not exist
-checkExistsUsername() {
-    if id "$1" >/dev/null 2>&1; then
-        echo "Error: This user already exists."
-        exit
-    fi
-}
-
-checkValidUsername() {
-    # Uses private function _isValidUsername
-    if ! (_isValidUsername "$1"); then
-        echo "Error: \"$1\" is not a valid username"
-    fi
-}
-
-_isValidUsername() {
-    local re='^[[:lower:]_][[:lower:][:digit:]_-]{2,15}$'
-    (( ${#1} > 16 )) && return 1
-    [[ $1 =~ $re ]] # The return value of this comparison is used for the function
-}
